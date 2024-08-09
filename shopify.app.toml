@@ -1,0 +1,23 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "8ae7c191bac32e303e5ea117fac9b12b"
+name = "product-discount-gwp"
+handle = "product-discount-gwp-4"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = true
+
+[build]
+dev_store_url = "https://gwp-big-test.myshopify.com/"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_cart_transforms"
+
+[auth]
+redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+
+[webhooks]
+api_version = "2024-07"
+
+[pos]
+embedded = false
