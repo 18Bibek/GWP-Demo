@@ -31,19 +31,19 @@ function Extension() {
   const applyCartLinesChange = useApplyCartLinesChange();
 
   const useSetting = useSettings();
-  console.log("usesettings", useSetting);
+  // console.log("usesettings", useSetting);
 
   const variantID = useSetting.product;
 
   const lineItem = useCartLines();
-  console.log("lineItem",lineItem);
+  // console.log("lineItem",lineItem);
 
   const productExists = lineItem.some(item =>
     item.merchandise.id === variantID &&
     item.attributes.some(attr => attr.key === "GWP" && attr.value === "1")
   );
 
-  console.log("product exist -", productExists)
+  // console.log("product exist -", productExists)
  
   useEffect(() => {
     if (
@@ -54,7 +54,7 @@ function Extension() {
       !productExists
     ) {
       // console.log("discount code", discountCode);  
-      console.log('variantID',variantID)
+      // console.log('variantID',variantID)
       applyCartLinesChange({
         type: 'addCartLine',
         merchandiseId: `${variantID}`,
@@ -69,11 +69,10 @@ function Extension() {
       setIsDiscountApplied(true);
     } else if ((!discountCode || discountCode.length === 0 || discountCode[0].code !== useSetting.discount_code) &&
     isDiscountApplied) {
-      console.log("hello world 1");
+      // console.log("hello world 1");
       lineItem.forEach(function(ele){
         // console.log(ele.merchandise.id)
         if (ele.merchandise.id == variantID ){
-          console.log("hello world")
           applyCartLinesChange({
             type: 'removeCartLine',
             id: ele.id,
@@ -116,6 +115,6 @@ function Extension() {
       type: "updateAttribute",
       value: isChecked ? "yes" : "no",
     });
-    console.log("applyAttributeChange result", result);
+    // console.log("applyAttributeChange result", result);
   }
 }
